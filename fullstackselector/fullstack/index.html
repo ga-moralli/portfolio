@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CAISHEN — Personal Wealth System</title>
+
+    <meta
+        name="description"
+        content="CAISHEN — A Chinese-inspired personal finance and wealth management dashboard."
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="page">
+
+        <!-- HEADER -->
+
+        <header class="topbar">
+
+            <div class="brand">
+
+                <div class="brand-seal">
+                    財
+                </div>
+
+                <div class="brand-info">
+
+                    <div class="brand-name">
+                        CAISHEN
+                    </div>
+
+                    <div class="brand-subtitle">
+                        财神 · PERSONAL WEALTH SYSTEM
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="header-right">
+
+                <span id="current-date"></span>
+
+                <span class="header-divider"></span>
+
+                <span class="status-dot"></span>
+
+                <span>LOCAL</span>
+
+            </div>
+
+        </header>
+
+
+        <!-- ORNAMENT -->
+
+        <div class="ornament">
+
+            <span class="cloud cloud-left">
+                ☁
+            </span>
+
+            <span class="ornament-line"></span>
+
+            <span class="ornament-symbol">
+                福
+            </span>
+
+            <span class="ornament-line"></span>
+
+            <span class="cloud cloud-right">
+                ☁
+            </span>
+
+        </div>
+
+
+        <main>
+
+            <!-- HERO -->
+
+            <section class="hero">
+
+                <div class="hero-dragon">
+
+                    <div class="dragon-ring"></div>
+
+                    <span class="dragon-character">
+                        龍
+                    </span>
+
+                    <span class="dragon-subtitle">
+                        龙 · PROSPERITY
+                    </span>
+
+                </div>
+
+
+                <div class="hero-content">
+
+                    <span class="eyebrow">
+                        财富管理系统 · WEALTH MANAGEMENT
+                    </span>
+
+
+                    <h1>
+                        YOUR WEALTH,<br>
+                        <span>UNDER CONTROL.</span>
+                    </h1>
+
+
+                    <div class="hero-divider">
+
+                        <span></span>
+
+                        <b>✦</b>
+
+                        <span></span>
+
+                    </div>
+
+
+                    <p>
+                        Track your income, expenses and spending habits
+                        through a private personal wealth dashboard.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="primary-button"
+                    id="open-modal"
+                >
+
+                    <span class="button-symbol">
+                        金
+                    </span>
+
+                    ADD TRANSACTION
+
+                </button>
+
+            </section>
+
+
+            <!-- STATS -->
+
+            <section class="stats-grid">
+
+                <article class="stat-card">
+
+                    <span class="stat-number">
+                        壹
+                    </span>
+
+                    <span class="stat-label">
+                        TOTAL BALANCE
+                    </span>
+
+                    <strong id="balance">
+                        R$ 0,00
+                    </strong>
+
+                    <span class="stat-meta">
+                        CURRENT WEALTH
+                    </span>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <span class="stat-number">
+                        貳
+                    </span>
+
+                    <span class="stat-label">
+                        TOTAL INCOME
+                    </span>
+
+                    <strong
+                        id="income"
+                        class="positive"
+                    >
+                        R$ 0,00
+                    </strong>
+
+                    <span class="stat-meta">
+                        MONEY RECEIVED
+                    </span>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <span class="stat-number">
+                        參
+                    </span>
+
+                    <span class="stat-label">
+                        TOTAL EXPENSES
+                    </span>
+
+                    <strong
+                        id="expenses"
+                        class="negative"
+                    >
+                        R$ 0,00
+                    </strong>
+
+                    <span class="stat-meta">
+                        MONEY SPENT
+                    </span>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <span class="stat-number">
+                        肆
+                    </span>
+
+                    <span class="stat-label">
+                        SAVINGS RATE
+                    </span>
+
+                    <strong id="savings">
+                        0%
+                    </strong>
+
+                    <span class="stat-meta">
+                        WEALTH RETAINED
+                    </span>
+
+                </article>
+
+            </section>
+
+
+            <!-- ANALYTICS -->
+
+            <section class="charts-grid">
+
+
+                <article class="panel chart-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <span class="panel-label">
+                                财务分析 // FINANCIAL ANALYSIS
+                            </span>
+
+                            <h2>
+                                MONTHLY CASH FLOW
+                            </h2>
+
+                        </div>
+
+                        <span class="panel-kanji">
+                            金
+                        </span>
+
+                    </div>
+
+
+                    <div class="chart-container">
+
+                        <canvas id="cashflow-chart"></canvas>
+
+                    </div>
+
+                </article>
+
+
+                <article class="panel chart-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <span class="panel-label">
+                                支出分析 // EXPENSE ANALYSIS
+                            </span>
+
+                            <h2>
+                                EXPENSE BREAKDOWN
+                            </h2>
+
+                        </div>
+
+                        <span class="panel-kanji">
+                            富
+                        </span>
+
+                    </div>
+
+
+                    <div class="chart-container doughnut-container">
+
+                        <canvas id="category-chart"></canvas>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- TRANSACTIONS -->
+
+            <section class="panel transactions-panel">
+
+                <div class="red-strip"></div>
+
+
+                <div class="transactions-header panel-header">
+
+                    <div>
+
+                        <span class="panel-label">
+                            交易记录 · TRANSACTION DATABASE
+                        </span>
+
+                        <h2>
+                            RECENT TRANSACTIONS
+                        </h2>
+
+                    </div>
+
+
+                    <span id="transaction-count">
+                        0 RECORDS
+                    </span>
+
+                </div>
+
+
+                <div class="filters">
+
+                    <div class="search-wrapper">
+
+                        <span class="search-symbol">
+                            龍
+                        </span>
+
+                        <input
+                            type="text"
+                            id="search"
+                            placeholder="SEARCH TRANSACTIONS..."
+                        >
+
+                    </div>
+
+
+                    <select id="type-filter">
+
+                        <option value="all">
+                            ALL TYPES
+                        </option>
+
+                        <option value="income">
+                            INCOME
+                        </option>
+
+                        <option value="expense">
+                            EXPENSE
+                        </option>
+
+                    </select>
+
+
+                    <select id="category-filter">
+
+                        <option value="all">
+                            ALL CATEGORIES
+                        </option>
+
+                        <option value="food">
+                            FOOD
+                        </option>
+
+                        <option value="transport">
+                            TRANSPORT
+                        </option>
+
+                        <option value="bills">
+                            BILLS
+                        </option>
+
+                        <option value="shopping">
+                            SHOPPING
+                        </option>
+
+                        <option value="entertainment">
+                            ENTERTAINMENT
+                        </option>
+
+                        <option value="health">
+                            HEALTH
+                        </option>
+
+                        <option value="education">
+                            EDUCATION
+                        </option>
+
+                        <option value="salary">
+                            SALARY
+                        </option>
+
+                        <option value="other">
+                            OTHER
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>DATE</th>
+
+                                <th>DESCRIPTION</th>
+
+                                <th>CATEGORY</th>
+
+                                <th>TYPE</th>
+
+                                <th>AMOUNT</th>
+
+                                <th></th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="transactions-list"></tbody>
+
+                    </table>
+
+                </div>
+
+
+                <div
+                    id="empty-state"
+                    class="empty-state"
+                >
+
+                    <div class="empty-dragon">
+                        龍
+                    </div>
+
+                    <h3>
+                        NO TRANSACTIONS FOUND
+                    </h3>
+
+                    <p>
+                        Add your first transaction to begin
+                        tracking your wealth.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <!-- FOOTER -->
+
+        <footer>
+
+            <div class="footer-brand">
+
+                <span>
+                    CAISHEN
+                </span>
+
+                <small>
+                    财神
+                </small>
+
+            </div>
+
+
+            <span>
+                PRIVATE · CLIENT-SIDE
+            </span>
+
+
+            <span>
+                DATA STORED LOCALLY
+            </span>
+
+        </footer>
+
+    </div>
+
+
+    <!-- MODAL -->
+
+    <div
+        class="modal-overlay"
+        id="modal"
+    >
+
+        <div class="modal">
+
+            <div class="modal-dragon">
+                龍
+            </div>
+
+
+            <div class="modal-header">
+
+                <div>
+
+                    <span class="panel-label">
+                        新记录 · NEW RECORD
+                    </span>
+
+                    <h2>
+                        ADD TRANSACTION
+                    </h2>
+
+                </div>
+
+
+                <button
+                    class="close-button"
+                    id="close-modal"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="transaction-form">
+
+
+                <div class="form-group">
+
+                    <label for="description">
+                        DESCRIPTION
+                    </label>
+
+                    <input
+                        id="description"
+                        type="text"
+                        placeholder="e.g. Grocery shopping"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="amount">
+                            AMOUNT
+                        </label>
+
+                        <input
+                            id="amount"
+                            type="number"
+                            min="0.01"
+                            step="0.01"
+                            placeholder="0.00"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="transaction-type">
+                            TYPE
+                        </label>
+
+                        <select
+                            id="transaction-type"
+                            required
+                        >
+
+                            <option value="expense">
+                                EXPENSE
+                            </option>
+
+                            <option value="income">
+                                INCOME
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="category">
+                            CATEGORY
+                        </label>
+
+                        <select
+                            id="category"
+                            required
+                        >
+
+                            <option value="food">
+                                FOOD
+                            </option>
+
+                            <option value="transport">
+                                TRANSPORT
+                            </option>
+
+                            <option value="bills">
+                                BILLS
+                            </option>
+
+                            <option value="shopping">
+                                SHOPPING
+                            </option>
+
+                            <option value="entertainment">
+                                ENTERTAINMENT
+                            </option>
+
+                            <option value="health">
+                                HEALTH
+                            </option>
+
+                            <option value="education">
+                                EDUCATION
+                            </option>
+
+                            <option value="salary">
+                                SALARY
+                            </option>
+
+                            <option value="other">
+                                OTHER
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="date">
+                            DATE
+                        </label>
+
+                        <input
+                            id="date"
+                            type="date"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="submit-button"
+                    type="submit"
+                >
+
+                    SAVE TRANSACTION
+
+                    <span>↗</span>
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script src="/fullstackselector/fullstack/scripts/scripts.js"></script>
+
+</body>
+
+</html>

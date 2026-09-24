@@ -1,0 +1,621 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 50% 8%,
+            rgba(170, 15, 15, 0.13),
+            transparent 34%
+        ),
+        radial-gradient(
+            circle at 10% 80%,
+            rgba(100, 0, 0, 0.06),
+            transparent 30%
+        ),
+        #050505;
+
+    color: #ffffff;
+
+    font-family: 'Montserrat', sans-serif;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   SUBTLE GRID
+========================================================= */
+
+body::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    background-image:
+        linear-gradient(
+            rgba(255, 255, 255, 0.014) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.014) 1px,
+            transparent 1px
+        );
+
+    background-size: 60px 60px;
+
+    mask-image: linear-gradient(
+        to bottom,
+        black 0%,
+        transparent 85%
+    );
+
+    z-index: 0;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header {
+    width: min(100% - 40px, 1000px);
+
+    margin: 0 auto;
+
+    padding-top: 105px;
+    padding-bottom: 65px;
+
+    position: relative;
+    z-index: 1;
+}
+
+
+.header-content {
+    text-align: center;
+}
+
+
+.eyebrow {
+    display: block;
+
+    margin-bottom: 18px;
+
+    color: #555555;
+
+    font-size: 9px;
+    font-weight: 600;
+
+    letter-spacing: 0.3em;
+}
+
+
+h1 {
+    color: #f5f5f5;
+
+    font-size: 30px;
+    font-weight: 600;
+
+    letter-spacing: -0.035em;
+}
+
+
+.subtitle {
+    margin-top: 10px;
+
+    color: #666666;
+
+    font-size: 10px;
+    font-weight: 500;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.23em;
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+main {
+    width: min(100% - 40px, 1000px);
+
+    margin: 0 auto;
+
+    padding-bottom: 100px;
+
+    position: relative;
+    z-index: 1;
+}
+
+
+/* =========================================================
+   PROJECT SECTION
+========================================================= */
+
+.project-section {
+    margin-bottom: 65px;
+}
+
+
+.project-section:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   SECTION HEADER
+========================================================= */
+
+.section-header {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 15px;
+}
+
+
+.section-number {
+    color: #7d2525;
+
+    font-size: 9px;
+    font-weight: 600;
+
+    letter-spacing: 0.15em;
+}
+
+
+.section-header h2 {
+    color: #eeeeee;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    letter-spacing: 0.16em;
+}
+
+
+.section-line {
+    height: 1px;
+
+    flex: 1;
+
+    background:
+        linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0.1),
+            transparent
+        );
+}
+
+
+/* =========================================================
+   PROJECT CARD
+========================================================= */
+
+.project-card {
+    min-height: 145px;
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding: 30px 70px 30px 25px;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.055),
+            rgba(255, 255, 255, 0.015)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 6px;
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* =========================================================
+   RED AMBIENT LIGHT
+========================================================= */
+
+.project-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 260px;
+    height: 260px;
+
+    top: -150px;
+    right: -100px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(220, 25, 25, 0.23),
+            rgba(180, 10, 10, 0.08) 38%,
+            transparent 70%
+        );
+
+    opacity: 0.7;
+
+    pointer-events: none;
+
+    transition:
+        transform 0.5s ease,
+        opacity 0.4s ease;
+}
+
+
+/* =========================================================
+   BOTTOM RED LINE
+========================================================= */
+
+.project-card::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 0%;
+    height: 1px;
+
+    background: #ff3030;
+
+    box-shadow:
+        0 0 10px rgba(255, 40, 40, 0.8),
+        0 0 25px rgba(255, 20, 20, 0.35);
+
+    transition: width 0.4s ease;
+}
+
+
+/* =========================================================
+   CARD HOVER
+========================================================= */
+
+.project-card:hover {
+    transform: translateY(-6px);
+
+    border-color: rgba(255, 45, 45, 0.32);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.065),
+            rgba(255, 255, 255, 0.018)
+        );
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.55),
+        0 0 35px rgba(190, 20, 20, 0.08);
+}
+
+
+.project-card:hover::before {
+    transform: scale(1.45);
+
+    opacity: 1;
+}
+
+
+.project-card:hover::after {
+    width: 100%;
+}
+
+
+/* =========================================================
+   CARD LABEL
+========================================================= */
+
+.card-number {
+    position: relative;
+    z-index: 2;
+
+    margin-bottom: 10px;
+
+    color: #505050;
+
+    font-size: 9px;
+    font-weight: 600;
+
+    letter-spacing: 0.15em;
+
+    transition: color 0.3s ease;
+}
+
+
+.project-card:hover .card-number {
+    color: #8d2929;
+}
+
+
+/* =========================================================
+   PROJECT TITLE
+========================================================= */
+
+.project-title {
+    position: relative;
+    z-index: 2;
+
+    margin: 0;
+
+    color: #eeeeee;
+
+    font-size: 19px;
+    font-weight: 500;
+
+    letter-spacing: 0.04em;
+
+    transition:
+        color 0.3s ease,
+        letter-spacing 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+.project-card:hover .project-title {
+    color: #ff5555;
+
+    letter-spacing: 0.08em;
+
+    transform: translateX(-2px);
+}
+
+
+/* =========================================================
+   PROJECT DESCRIPTION
+========================================================= */
+
+.project-description {
+    position: relative;
+    z-index: 2;
+
+    margin-top: 7px;
+
+    color: #5b5b5b;
+
+    font-size: 10px;
+    font-weight: 500;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.16em;
+
+    transition: color 0.3s ease;
+}
+
+
+.project-card:hover .project-description {
+    color: #777777;
+}
+
+
+/* =========================================================
+   ARROW
+========================================================= */
+
+.arrow {
+    position: absolute;
+
+    right: 22px;
+    bottom: 18px;
+
+    color: #484848;
+
+    font-size: 19px;
+    font-weight: 400;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+.project-card:hover .arrow {
+    color: #ff4040;
+
+    transform: translate(3px, -3px);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    width: min(100% - 40px);
+
+    margin: auto auto 0;
+
+    padding: 20px 0 30px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+    color: #555555;
+
+    font-size: 9px;
+    font-weight: 500;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.15em;
+
+    position: relative;
+    z-index: 1;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 850px) {
+
+    header {
+        padding-top: 85px;
+        padding-bottom: 50px;
+    }
+
+    main {
+        max-width: 650px;
+    }
+
+    .project-card {
+        min-height: 130px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 500px) {
+
+    header {
+        width: calc(100% - 28px);
+
+        padding-top: 65px;
+        padding-bottom: 45px;
+    }
+
+
+    h1 {
+        font-size: 24px;
+    }
+
+
+    .subtitle {
+        font-size: 9px;
+
+        line-height: 1.7;
+    }
+
+
+    main {
+        width: calc(100% - 28px);
+
+        padding-bottom: 60px;
+    }
+
+
+    .project-section {
+        margin-bottom: 50px;
+    }
+
+
+    .project-card {
+        min-height: 115px;
+
+        padding: 25px 60px 25px 20px;
+    }
+
+
+    .project-title {
+        font-size: 16px;
+    }
+
+
+    .project-description {
+        font-size: 9px;
+    }
+
+
+    footer {
+        width: calc(100% - 28px);
+
+        font-size: 8px;
+
+        gap: 15px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL SCREENS
+========================================================= */
+
+@media (max-width: 350px) {
+
+    header {
+        padding-top: 50px;
+    }
+
+
+    h1 {
+        font-size: 21px;
+    }
+
+
+    .section-header h2 {
+        font-size: 11px;
+    }
+
+
+    .project-card {
+        min-height: 105px;
+    }
+
+
+    footer {
+        flex-direction: column;
+
+        align-items: center;
+    }
+}
